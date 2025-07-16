@@ -38,7 +38,5 @@ public class SaleMinDTO {
 
 	public String getSellerName() {
 		return sellerName;
-	}
-	
-	
+	}	
 }

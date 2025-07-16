@@ -15,8 +15,6 @@ import com.devsuperior.dsmeta.dto.SummaryDTO;
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 
-import projections.SummaryProjection;
-
 @Service
 public class SaleService {
 
@@ -42,8 +40,8 @@ public class SaleService {
 	
 	public Page<SummaryDTO> searchSummary(String minDate, String maxDate, Pageable pageable){
 		validateDate(minDate, maxDate);
-		Page<SummaryProjection> result = repository.searchSummary(min, today, pageable);
-		return result.map(x -> new SummaryDTO(x));
+		Page<SummaryDTO> result = repository.searchSummary(min, today, pageable);
+		return result;
 	}
 	
 	private void validateDate(String minDate, String maxDate) { 
