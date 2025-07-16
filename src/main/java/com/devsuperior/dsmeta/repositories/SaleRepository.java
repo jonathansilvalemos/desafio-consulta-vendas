@@ -19,8 +19,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	Page<SaleMinDTO> searchReport(LocalDate minDate, LocalDate maxDate, String name, Pageable pageable);
 	
 	
-	@Query(value = "SELECT new com.devsuperior.dsmeta.dto.SummaryDTO(obj.seller.name, SUM(obj.amount) AS total) FROM Sale obj INNER JOIN obj.seller "
-			+ "WHERE obj.date BETWEEN :minDate AND :maxDate GROUP BY obj.seller.name",
-			countQuery = "SELECT COUNT(obj) FROM Sale obj JOIN obj.seller")			
+	@Query("SELECT new com.devsuperior.dsmeta.dto.SummaryDTO(obj.seller.name, SUM(obj.amount) AS total) FROM Sale obj INNER JOIN obj.seller "
+			+ "WHERE obj.date BETWEEN :minDate AND :maxDate GROUP BY obj.seller.name")				
 	Page<SummaryDTO> searchSummary(LocalDate minDate, LocalDate maxDate, Pageable pageable);
 }
